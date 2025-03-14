@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram-Like Grid with Modal and Separate Links</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fafafa;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .container img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .container img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Modal Styling */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .modal img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .modal a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .modal a:hover {
+            background: #0056b3;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+        
+               
+.smooth-button {
+    background: linear-gradient(90deg,#FFAA1D,#66ff00,#FFFFFF);
+        background-size: 400% 400%;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    outline: none;
+    animation: gradient-move 5s linear infinite;
+    transition: transform 0.3s ease, background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    font-weight: bold;
+}
+
+.smooth-button:hover {
+    transform: scale(1.05);
+}
+
+.smooth-button:active {
+    transform: scale(0.95);
+}
+
+    </style>
+</head>
+<body>
+    <br>
+        <h1> <a href="index.html" class="smooth-button" style="margin-top:10px;left:10px;">Home</a> </h1>
+        <br>
+        <br>
+        <h3 style="text-align:center;padding:10px;">Tap to zoom image</h3>
+
+    <div class="container">
+        <img src="1.jpeg" alt="Image 1" onclick="openModal(this, 'https://www.zazzle.com/success_was_not_luck_i_built_it_t_shirt-256519402724125516')">
+        <img src="2.jpeg" alt="Image 2" onclick="openModal(this, 'https://www.zazzle.com/meeting_you_felt_like_fairytale_t_shirt-256135880638800623')">
+        <img src="3.jpeg" alt="Image 3" onclick="openModal(this, 'https://www.zazzle.com/when_music_plays_do_you_still_hear_my_name_t_shirt-256243339003761456')">
+        <img src="4.jpeg" alt="Image 4" onclick="openModal(this, 'https://www.zazzle.com/my_style_a_statement_not_a_question_t_shirt-256927019683726921')">
+        <img src="5.jpeg" alt="Image 5" onclick="openModal(this, 'https://www.zazzle.com/stronger_wiser_unstoppable_t_shirt-256353167149279098')">
+        <img src="6.jpeg" alt="Image 6" onclick="openModal(this, 'https://www.zazzle.com/one_day_you_will_watch_me_rise_from_afar_t_shirt-256979170146995512')">
+        <img src="7.jpeg" alt="Image 7" onclick="openModal(this, 'https://www.zazzle.com/glowing_untamed_lost_in_moment_t_shirt-256192063371844583')">
+        <img src="8.jpeg" alt="Image 8" onclick="openModal(this, 'https://www.zazzle.com/drama_fades_but_i_remain_t_shirt-256222781843037897')">
+        <img src="9.jpeg" alt="Image 9" onclick="openModal(this, 'https://www.zazzle.com/our_battles_our_glory_forever_in_history_t_shirt-256891909177009582')">
+           <img src="10.jpeg" alt="Image 10" onclick="openModal(this, 'https://www.zazzle.com/frozen_in_time_trapped_in_memories_t_shirt-256586527126996914')">
+            <img src="11.jpeg" alt="Image 1" onclick="openModal(this, 'https://www.zazzle.com/you_were_my_favorite_line_in_an_unfinished_poem_t_shirt-256536305103271272')">
+        <img src="12.jpeg" alt="Image 2" onclick="openModal(this, 'https://www.zazzle.com/legends_never_fade_memories_never_die_t_shirt-256261253159500793')">
+        <img src="13.jpeg" alt="Image 3" onclick="openModal(this, 'https://www.zazzle.com/where_i_go_world_shines_brighter_t_shirt-256279432789329822')">
+        <img src="14.jpeg" alt="Image 4" onclick="openModal(this, 'https://www.zazzle.com/a_single_word_could_have_changed_it_all_t_shirt-256841053937742210')">
+        <img src="15.jpeg" alt="Image 5" onclick="openModal(this, 'https://www.zazzle.com/yep_chaos_thats_me_t_shirt-256170186224367065')">
+        <img src="16.jpeg" alt="Image 6" onclick="openModal(this, 'https://www.zazzle.com/a_love_so_fierce_burned_like_fire_t_shirt-256066711520269339')">
+        <img src="17.jpeg" alt="Image 7" onclick="openModal(this, 'https://www.zazzle.com/we_painted_our_world_in_chaos_and_color_t_shirt-256166058131338131')">
+        <img src="18.jpeg" alt="Image 8" onclick="openModal(this, 'https://www.zazzle.com/every_detail_burned_in_memory_t_shirt-256429139699473092')">
+        <img src="19.jpeg" alt="Image 9" onclick="openModal(this, 'https://www.zazzle.com/forever_legends_forever_unforgettable_t_shirt-256922303147564668')">
+           <img src="20.jpeg" alt="Image 10" onclick="openModal(this, 'https://www.zazzle.com/brush_it_off_rise_above_t_shirt-256989972158564825')">
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <img id="modalImage" src="" alt="Focused Image">
+            <a id="imageLink" href="#" target="_blank">Go To Store</a>
+        </div>
+    </div>
+
+    <script>
+        function openModal(img, link) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const imageLink = document.getElementById('imageLink');
+
+            modal.style.display = 'flex';
+            modalImage.src = img.src;
+            imageLink.href = link;  // Set the specific link for the image
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
