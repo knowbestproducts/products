@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Know Best Products</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Gradient Background */
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-45deg, #feac5e, #c779d0, #4bc0c8);
+            background-size: 300% 300%;
+            animation: gradientAnimation 15s infinite alternate ease-in-out;
+            z-index: -1;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphic Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+        }
+
+        /* Header */
+        .header {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+        .header a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* Full-Screen Slideshow */
+        .slideshow-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 5;
+        }
+
+        /* Slide */
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            color: white;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+           /* object-fit: cover;*/
+            z-index: -1;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        /* Text Overlay */
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .slide-content h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .slide-content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.6);
+        }
+        
+.smooth-button {
+    background: linear-gradient(90deg,#FFAA1D,#66ff00,#FFFFFF);
+    background-size: 400% 400%;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    outline: none;
+    animation: gradient-move 5s linear infinite;
+    transition: transform 0.3s ease, background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    font-weight: bold;
+}
+
+.smooth-button:hover {
+    transform: scale(1.05);
+}
+
+.smooth-button:active {
+    transform: scale(0.95);
+}
+
+    
+.smooth-button2 {
+    background: linear-gradient(90deg,#FFAA1D,#EE4B2B,#FFFFFF);
+    background-size: 400% 400%;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    outline: none;
+    animation: gradient-move 5s linear infinite;
+    transition: transform 0.3s ease, background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    font-weight: bold;
+}
+
+.smooth-button2:hover {
+    transform: scale(1.05);
+}
+
+.smooth-button2:active {
+    transform: scale(0.95);
+}
+
+    
+.smooth-button3 {
+    background: linear-gradient(90deg,#FFAA1D,#0096FF,#FFFFFF);
+    background-size: 400% 400%;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    outline: none;
+    animation: gradient-move 5s linear infinite;
+    transition: transform 0.3s ease, background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    font-weight: bold;
+}
+
+.smooth-button3:hover {
+    transform: scale(1.05);
+}
+
+.smooth-button3:active {
+    transform: scale(0.95);
+}
+
+
+    
+.smooth-button4 {
+    background: linear-gradient(90deg,#00008B,#4ADEDE,#000000);
+    background-size: 400% 400%;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    outline: none;
+    animation: gradient-move 5s linear infinite;
+    transition: transform 0.3s ease, background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    font-weight: bold;
+}
+
+.smooth-button4:hover {
+    transform: scale(1.05);
+}
+
+.smooth-button4:active {
+    transform: scale(0.95);
+}
+
+@keyframes gradient-move {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+        /* Navigation Buttons */
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.3);
+            color: black;
+            font-size: 24px;
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+        .prev { left: 20px; }
+        .next { right: 20px; }
+        .prev:hover, .next:hover {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            z-index: 1000;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Gradient Background -->
+<div class="background"></div>
+
+<!-- Header -->
+<div class="header glass">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+<!-- Full-Screen Slideshow -->
+<div class="slideshow-container">
+    <div class="slide active">
+        <img src="img1.jpg" alt="Slide 1" style="object-fit:cover;">
+        <div class="slide-content">
+            <h2 style="text-align:left; color:yellow;">Featured Products</h2>
+            <h1>Slim Down Naturally!</h1>
+            <p>Looking for a simple way to lose weight? These powerful slimming supplements are packed with natural ingredients to help curb cravings, boost metabolism, and burn fat faster. Say goodbye to excess weight and hello to a healthier, slimmer you! Start your weight loss journey today!</p>
+            <a href="https://www.digistore24.com/redir/382628/Happio247/" class="smooth-button">Start Now</a>
+                 </div>
+                 <br>
+           
+                <p style="color:Orange; font-size:25px; text-align:left;padding:10px;">Unique Attractive  Quote T-Shirt by Us</p> 
+                 
+    </div>
+
+    <div class="slide">
+        <img src="img2.jpg" alt="Slide 2" style="object-fit:cover;">
+        <div class="slide-content">
+            <h1>Get Fit Fast With Aerobics!</h1>
+            <p>Want to lose weight and tone up fast? Aerobics is the ultimate fat-burning workout that helps you shed pounds while having fun. No expensive equipment needed—just follow simple moves and see results quickly. Get fit, feel great, and boost your energy now! Start your aerobics routine today!</p>
+            <a href="https://www.digistore24.com/redir/501715/Happio247/" class="smooth-button2">Get Fit Now</a>
+        </div>
+        <br>
+        
+           <p style="color:Orange;">"Drama fades but I remain!"</p>
+    </div>
+
+    <div class="slide">
+        <img src="img3.jpg" alt="Slide 3">
+        <div class="slide-content">
+            <h1>The Magical Water Bottle for Amazing Health!</h1>
+            <p>Stay hydrated and boost your well-being with the Magical Water Bottle! This innovative bottle enhances your water with incredible energy, helping you stay energized, improve digestion, and support weight loss. Hydration has never been this powerful! Get your magical bottle today</p>
+            <a href="https://lumiplus.com/pages/lumi-water-bottle-digistore24#aff=Happio247" class="smooth-button3">Boost Energy Now</a>
+        </div>
+        <br>
+  
+        <p style="color:Orange;">"Every detail burned in memory!"
+   </p>
+    </div>
+
+    <div class="slide">
+        <img src="img4.jpg" alt="Slide 4">
+        <div class="slide-content">
+            <h1>Unlock Your Wealth Signal Now!</h1>
+            <p>Are you ready to attract financial success? Unlock your Wealth Signal and discover the secret to abundance! Whether it's more money, better opportunities, or financial freedom, this program helps you tap into wealth effortlessly. Start your journey to wealth today!</p>
+            <a href="https://wealthsignaloriginal.com/DS/vsl/#aff=Happio247" class="smooth-button4">Receive Now</a>
+        </div>
+        <br>
+        <br>
+          <a href="https://www.zazzle.com/store/theslang/products" class="smooth-button2" style="font-size:12px;">View Quotes T-Shirt</a>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <button class="prev" onclick="prevSlide()">❮</button>
+    <button class="next" onclick="nextSlide()">❯</button>
+</div>
+
+<!-- Footer -->
+<div class="footer glass">
+<!-- Cookie Notice -->
+<div id="cookie-notice" class="cookie-container">
+    <p>
+        🍪 We use cookies to offer you a better browsing experience and analyze site traffic. If you continue to use this site, you consent to our use of cookies.
+        <a href="https://www.cookiesandyou.com/" target="_blank">Learn More</a>.
+    </p>
+    <button id="accept-cookies">Got It.</button>
+</div>
+
+<!-- Responsive Styling -->
+<style>
+    .cookie-container {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        margin-left: 10px;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.9);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 8px;
+        display: none; /* Initially hidden */
+        align-items: center;
+        gap: 15px;
+        font-size: 16px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 1s ease-in-out;
+        width: auto;
+        max-width: 100vw; /* Desktop: 50% of viewport width */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .cookie-container p {
+        margin: 0;
+        flex: 1;
+        text-align: center;
+    }
+
+    .cookie-container a {
+        color: #ffcc00;
+        text-decoration: underline;
+    }
+
+    .cookie-container button {
+        background: #ffcc00;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .cookie-container button:hover {
+        background: #e6b800;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+        to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+
+    /* Tablet (≤1024px) */
+    @media (max-width: 1024px) {
+        .cookie-container {
+            max-width: 80vw; /* Increase width for tablets */
+        }
+    }
+
+    /* Mobile (≤768px) */
+    @media (max-width: 768px) {
+        .cookie-container {
+            max-width: 90vw;
+            padding: 15px;
+            bottom: 10px;
+        }
+
+        .cookie-container p {
+            font-size: 14px;
+        }
+
+        .cookie-container button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    }
+
+    /* Small Phones (≤480px) */
+    @media (max-width: 480px) {
+        .cookie-container {
+            width: 100vw; /* Full screen width */
+            left: 0;
+            transform: none;
+            border-radius: 0;
+        }
+    }
+</style>
+
+<!-- JavaScript to Show Notice After a Delay -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if (!localStorage.getItem("cookiesAccepted")) {
+            setTimeout(function() {
+                document.getElementById("cookie-notice").style.display = "flex";
+            }, 5000); // Show after 5 seconds
+        }
+
+        document.getElementById("accept-cookies").addEventListener("click", function() {
+            localStorage.setItem("cookiesAccepted", true);
+            document.getElementById("cookie-notice").style.display = "none";
+        });
+    });
+</script>
+    <a href="disclaimer.html">Disclaimer</a>
+    <a href="privacy.html">Privacy Policy</a>
+</div>
+
+
+<!-- CSS for Styling -->
+<style>
+    .cookie-container {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        display: none; /* Initially hidden */
+        align-items: center;
+        gap: 10px;
+        font-size: 16px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    .cookie-container p {
+        margin: 0;
+    }
+
+    .cookie-container a {
+        color: #ffcc00;
+        text-decoration: underline;
+    }
+
+    .cookie-container button {
+        background: #ffcc00;
+        color: black;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .cookie-container button:hover {
+        background: #e6b800;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+        to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+</style>
+
+<!-- JavaScript to Load Cookie Notice After a Delay -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if (!localStorage.getItem("cookiesAccepted")) {
+            setTimeout(function() {
+                document.getElementById("cookie-notice").style.display = "flex";
+            }, 5000); // Show after 5 seconds
+        }
+
+        document.getElementById("accept-cookies").addEventListener("click", function() {
+            localStorage.setItem("cookiesAccepted", true);
+            document.getElementById("cookie-notice").style.display = "none";
+        });
+    });
+</script>
+<script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".slide");
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove("active");
+            if (i === index) slide.classList.add("active");
+        });
+    }
+
+    function nextSlide() {
+        slideIndex = (slideIndex + 1) % slides.length;
+        showSlide(slideIndex);
+    }
+
+    function prevSlide() {
+        slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+        showSlide(slideIndex);
+    }
+
+    // Auto-play slideshow every 4 seconds
+    setInterval(nextSlide, 7000);
+</script>
+
+</body>
+</html>
